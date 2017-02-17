@@ -1,0 +1,11 @@
+#!/bin/sh
+echo ""
+CONFIGURATIONFILE=
+CONFIGURATIONFILE="$(git diff HEAD@{1}..HEAD@{0} --name-only | findstr corext.config)"
+if [ ! -z "${CONFIGURATIONFILE}" ]; then
+    echo -e "\e[35mCoreXT configuration updated. Re-initialize your environment.\e[39m"
+	echo " "
+else
+    echo -e "\e[35mNo updates to CoreXT configuration.\e[39m"
+	echo " "
+fi
